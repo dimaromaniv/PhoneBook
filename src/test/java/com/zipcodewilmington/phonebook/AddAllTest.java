@@ -9,81 +9,66 @@ import java.util.List;
 public class AddAllTest {
 
 
+
+
+
     @Test
-    public void test4() {
+    public void test1() {
         // given
         PhoneBook phoneBook = new PhoneBook();
-        String expectedName = "Smith";
-        String phoneNumber = "302-554-4535".toString();
-        phoneBook.addAll(expectedName, phoneNumber);
-//        Assert.assertTrue(phoneBook.hasEntry(expectedName, phoneNumber));
+        String name = "Joe";
+        String[] phoneNumbers = {
+                "302-555-4444",
+                "302-555-3333",
+                "302-555-2222",
+                "302-555-1111",
+        };
+        System.out.println(phoneBook);
+
+
 
         // when
-        String actualName = phoneBook.lookup("Smith").toString();
+        phoneBook.addAll(name, phoneNumbers);
+        List<String> actualPhoneNumbers = phoneBook.lookup(name);
+        Assert.assertEquals(Arrays.asList(phoneNumbers), actualPhoneNumbers);
+    }
 
-        // then
-        Assert.assertEquals(phoneNumber, actualName);
+
+
+    @Test
+    public void test2() {
+        // given
+        PhoneBook phoneBook = new PhoneBook();
+        String name = "Joe";
+        String[] phoneNumbers = {
+                "302-555-5555",
+                "302-555-4444",
+                "302-555-3333",
+                "302-555-2222",
+        };
+
+        // when
+        phoneBook.addAll(name, phoneNumbers);
+        List<String> actualPhoneNumbers = phoneBook.lookup(name);
+        Assert.assertEquals(Arrays.asList(phoneNumbers), actualPhoneNumbers);
+    }
+
+
+    @Test
+    public void test3() {
+        // given
+        PhoneBook phoneBook = new PhoneBook();
+        String name = "Joe";
+        String[] phoneNumbers = {
+                "302-555-1212",
+                "302-555-3434",
+                "302-555-4545",
+                "302-555-5656",
+        };
+
+        // when
+        phoneBook.addAll(name, phoneNumbers);
+        List<String> actualPhoneNumbers = phoneBook.lookup(name);
+        Assert.assertEquals(Arrays.asList(phoneNumbers), actualPhoneNumbers);
     }
 }
-
-//
-//    @Test
-//    public void test1() {
-//        // given
-//        PhoneBook phoneBook = new PhoneBook();
-//        String name = "Joe";
-//        String[] phoneNumbers = {
-//                "302-555-4444",
-//                "302-555-3333",
-//                "302-555-2222",
-//                "302-555-1111",
-//        };
-//        System.out.println(phoneBook);
-//
-//
-//
-//        // when
-//        phoneBook.addAll(name, phoneNumbers);
-//        List<String> actualPhoneNumbers = phoneBook.lookup(name);
-//        Assert.assertEquals(Arrays.asList(phoneNumbers), actualPhoneNumbers);
-//    }
-//
-//
-//
-//    @Test
-//    public void test2() {
-//        // given
-//        PhoneBook phoneBook = new PhoneBook();
-//        String name = "Joe";
-//        String[] phoneNumbers = {
-//                "302-555-5555",
-//                "302-555-4444",
-//                "302-555-3333",
-//                "302-555-2222",
-//        };
-//
-//        // when
-//        phoneBook.addAll(name, phoneNumbers);
-//        List<String> actualPhoneNumbers = phoneBook.lookup(name);
-//        Assert.assertEquals(Arrays.asList(phoneNumbers), actualPhoneNumbers);
-//    }
-//
-//
-//    @Test
-//    public void test3() {
-//        // given
-//        PhoneBook phoneBook = new PhoneBook();
-//        String name = "Joe";
-//        String[] phoneNumbers = {
-//                "302-555-1212",
-//                "302-555-3434",
-//                "302-555-4545",
-//                "302-555-5656",
-//        };
-//
-//        // when
-//        phoneBook.addAll(name, phoneNumbers);
-//        List<String> actualPhoneNumbers = phoneBook.lookup(name);
-//        Assert.assertEquals(Arrays.asList(phoneNumbers), actualPhoneNumbers);
-//    }
-//}

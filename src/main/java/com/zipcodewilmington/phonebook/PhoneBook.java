@@ -14,7 +14,6 @@ public class PhoneBook {
 
 
     public PhoneBook(Map<String, List<String>> map) {
-
         this.phonebook = map;
     }
 
@@ -25,14 +24,29 @@ public class PhoneBook {
     }
 
     public void add(String name, String phoneNumber) {
+        if (phonebook.containsKey(name)){
+            phonebook.get(name).add(phoneNumber);
+        }else {
+            phonebook.put(name, new ArrayList<>());
+            phonebook.get(name).add(phoneNumber);
+            }
 
-        // this.phonebook.put(name,phoneNumbers);
+
+
+            // this.phonebook.put(name,phoneNumbers);
 
 
     }
 
     public void addAll(String name, String... phoneNumbers) {
-        phonebook.put(name , Arrays.asList(phoneNumbers));
+        for (String s : phoneNumbers) {
+            add(name,s);
+        }
+
+        //        phonebook.put(name , Arrays.asList(phoneNumbers));
+//
+
+
         //System.out.println(phonebook);
 
 
@@ -49,16 +63,19 @@ public class PhoneBook {
     }
 
     public void remove(String name) {
+        phonebook.remove(name);
     }
 
-    public Boolean hasEntry(String name,String phonebook) {
-
-        return null;
+    public Boolean hasEntry(String name,String phoneNumber) {
+        if (!phonebook.containsKey(name) &&
+                !phonebook.get(name).contains(phoneNumber) ){
+        return false;
+        }
+        return true;
     }
 
     public Boolean hasEntry(String name ){
-
-        return null;
+        return phonebook.containsKey(name);
     }
 
 
