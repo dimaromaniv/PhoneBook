@@ -20,7 +20,7 @@ public class PhoneBook {
 
     public PhoneBook() {
 
-        this( new TreeMap<>() );
+        this( new LinkedHashMap<>());
     }
 
     public void add(String name, String phoneNumber) {
@@ -85,15 +85,24 @@ public class PhoneBook {
     }
 
     public String reverseLookup(String phoneNumber)  {
+        for (String key :phonebook.keySet()) {
+            if (phonebook.get(key).contains(phoneNumber)){
+                return key;
+            }
+        }
         return null;
     }
 
     public List<String> getAllContactNames() {
-        return null;
+        ArrayList<String> arr = new ArrayList<>();
+
+            for (String names: phonebook.keySet()) {
+                arr.add(names);
+            }
+            return arr;
     }
 
     public Map<String, List<String>> getMap() {
-
 
         return new HashMap(phonebook);
     }
